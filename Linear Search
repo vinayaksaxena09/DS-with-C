@@ -1,0 +1,22 @@
+#include<stdio.h>
+
+int linearSearch(int arr[], int element, int size){
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i] == element)
+            return i;
+    }
+    return -1; // element not found
+}
+
+int main(){
+    int arr[] = {1,2,3,4,5,12,32,45,65,34};
+    int size = sizeof(arr)/sizeof(int);
+    int element = 12;
+    int result = linearSearch(arr, element, size);
+    if (result != -1)
+        printf("Element found at index %d", result);
+    else
+        printf("Element does not exist");
+    return 0;
+}
