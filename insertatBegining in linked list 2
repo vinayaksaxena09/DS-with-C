@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for a node
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// Function to insert a new node at the beginning of the linked list
+void insertAtBeginning(Node** head, int newData) {
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    newNode->data = newData;
+    newNode->next = *head;
+    *head = newNode;
+}
+
+// Function to print the linked list
+void printList(Node* node) {
+    while (node!= NULL) {
+        printf("%d ", node->data);
+        node = node->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    Node* head = NULL;
+    int n, data;
+    printf("enter no.of elements: ");
+    scanf("%d", &n);
+    // Insert nodes at the beginning of the linked list
+    // insertAtBeginning(&head, 1);
+    // insertAtBeginning(&head, 2);
+    // insertAtBeginning(&head, 3);
+    // insertAtBeginning(&head, 4);
+    // insertAtBeginning(&head, 5);
+    for(int i = 0; i<n; i++){
+        printf("element &d: ", i);
+        scanf("%d", &data);
+        insertAtBeginning(&head, data);
+    }
+
+    printf("Linked list: ");
+    printList(head);
+
+    return 0;
+}
