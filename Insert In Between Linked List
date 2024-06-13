@@ -1,0 +1,46 @@
+ #include<stdio.h>
+#include <stdlib.h>
+typedef struct node{
+    int data;
+    struct node* next;
+}node;
+void traverseInOrder(node* ptr){
+    while(ptr!=NULL){
+        printf("element: %d\n", ptr->data);
+        ptr = ptr->next;
+    }
+}
+int insertInBet(node *head, int data, int index){
+    node* ptr= (node*) malloc (sizeof(node));
+    ptr->data=data;
+    node* loc = head;
+    int i;
+    while (i!=index-1)
+    {
+        loc = loc->next;
+        i++;
+    }
+    ptr->next = loc->next;
+    loc->next = ptr;   
+    // return *head;
+}
+int main(){
+    struct node* head;
+    struct node* second;
+    struct node* third;
+    head = (node*) malloc(sizeof(node));
+    second = (node*) malloc(sizeof(node));
+    third = (node*) malloc(sizeof(node));
+    head->data = 1;
+    head->next = second;
+    second->data = 2;
+    second->next = third;
+    third->data = 3;
+    third->next = NULL; 
+    traverseInOrder(head);
+    printf("linked list after insertion at Between\n");
+    //InsertAtBeg(&head, 23);
+    insertInBet(head, 4, 2);
+    traverseInOrder(head);
+    return 0;
+}
